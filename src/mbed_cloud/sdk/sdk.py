@@ -107,7 +107,9 @@ def check_openssl_version():
     minor = int(match.group(3))
     patch = int(match.group(4))
 
-    if major >= 1 and minor >= 0 and patch >= 2:
+    if major > 1 or \
+       major == 1 and minor >= 1 or \
+       major == 1 and minor == 0 and patch >= 2:
         return  # all ok
 
     warnings.warn("""
